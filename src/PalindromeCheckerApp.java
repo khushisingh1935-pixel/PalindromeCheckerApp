@@ -1,32 +1,42 @@
 /**
- * UseCase3PalindromeCheckerApp
+ * UseCase4PalindromeCheckerApp
  * Version: 1.0
- * Description: Palindrome check using String reverse logic
+ * Description: Palindrome check using Character Array (char[])
  */
 
-public class UseCase3PalindromeCheckerApp {
+public class UseCase4PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
         // Original String
-        String original = "level";
+        String original = "racecar";
 
         System.out.println("======================================");
-        System.out.println("Palindrome Checker App - UC3");
+        System.out.println("Palindrome Checker App - UC4");
         System.out.println("======================================");
         System.out.println("Original String: " + original);
 
-        // Reverse the string using for loop
-        String reversed = "";
+        // Convert String to Character Array
+        char[] characters = original.toCharArray();
 
-        for (int i = original.length() - 1; i >= 0; i--) {
-            reversed = reversed + original.charAt(i);   // String concatenation
+        // Two-pointer approach
+        int start = 0;
+        int end = characters.length - 1;
+        boolean isPalindrome = true;
+
+        while (start < end) {
+
+            if (characters[start] != characters[end]) {
+                isPalindrome = false;
+                break;
+            }
+
+            start++;
+            end--;
         }
 
-        System.out.println("Reversed String: " + reversed);
-
-        // Compare original and reversed using equals()
-        if (original.equals(reversed)) {
+        // Display Result
+        if (isPalindrome) {
             System.out.println("Result: \"" + original + "\" is a Palindrome.");
         } else {
             System.out.println("Result: \"" + original + "\" is NOT a Palindrome.");
