@@ -1,33 +1,44 @@
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class UseCase5PalindromeCheckerApp {
+public class UseCase6PalindromeCheckerApp {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("=== UC5: Stack-Based Palindrome Checker ===");
+        System.out.println("=== UC6: Queue + Stack Based Palindrome Checker ===");
         System.out.print("Enter a string to check: ");
         String input = scanner.nextLine();
 
-        // Normalize input: remove spaces and convert to lowercase
+        // Convert to lowercase and remove spaces for uniformity
         String formattedInput = input.replaceAll("\\s+", "").toLowerCase();
 
+        Queue<Character> queue = new LinkedList<>();
         Stack<Character> stack = new Stack<>();
 
-        // Push characters into stack
+        // Enqueue and Push characters
         for (char ch : formattedInput.toCharArray()) {
-            stack.push(ch);
+            queue.add(ch);   // FIFO
+            stack.push(ch);  // LIFO
         }
 
-        // Pop characters to build reversed string
-        StringBuilder reversed = new StringBuilder();
-        while (!stack.isEmpty()) {
-            reversed.append(stack.pop());
+        boolean isPalindrome = true;
+
+        // Compare dequeue vs pop
+        while (!queue.isEmpty() && !stack.isEmpty()) {
+            char fromQueue = queue.remove();
+            char fromStack = stack.pop();
+
+            if (fromQueue != fromStack) {
+                isPalindrome = false;
+                break;
+            }
         }
 
-        // Compare original with reversed
-        if (formattedInput.equals(reversed.toString())) {
+        // Display result
+        if (isPalindrome) {
             System.out.println("Result: \"" + input + "\" is a Palindrome ✅");
         } else {
             System.out.println("Result: \"" + input + "\" is NOT a Palindrome ❌");
