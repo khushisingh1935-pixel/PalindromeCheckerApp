@@ -1,48 +1,38 @@
-/**
- * UseCase4PalindromeCheckerApp
- * Version: 1.0
- * Description: Palindrome check using Character Array (char[])
- */
+import java.util.Scanner;
+import java.util.Stack;
 
-public class UseCase4PalindromeCheckerApp {
+public class UseCase5PalindromeCheckerApp {
 
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-        // Original String
-        String original = "racecar";
+        System.out.println("=== UC5: Stack-Based Palindrome Checker ===");
+        System.out.print("Enter a string to check: ");
+        String input = scanner.nextLine();
 
-        System.out.println("======================================");
-        System.out.println("Palindrome Checker App - UC4");
-        System.out.println("======================================");
-        System.out.println("Original String: " + original);
+        // Normalize input: remove spaces and convert to lowercase
+        String formattedInput = input.replaceAll("\\s+", "").toLowerCase();
 
-        // Convert String to Character Array
-        char[] characters = original.toCharArray();
+        Stack<Character> stack = new Stack<>();
 
-        // Two-pointer approach
-        int start = 0;
-        int end = characters.length - 1;
-        boolean isPalindrome = true;
-
-        while (start < end) {
-
-            if (characters[start] != characters[end]) {
-                isPalindrome = false;
-                break;
-            }
-
-            start++;
-            end--;
+        // Push characters into stack
+        for (char ch : formattedInput.toCharArray()) {
+            stack.push(ch);
         }
 
-        // Display Result
-        if (isPalindrome) {
-            System.out.println("Result: \"" + original + "\" is a Palindrome.");
+        // Pop characters to build reversed string
+        StringBuilder reversed = new StringBuilder();
+        while (!stack.isEmpty()) {
+            reversed.append(stack.pop());
+        }
+
+        // Compare original with reversed
+        if (formattedInput.equals(reversed.toString())) {
+            System.out.println("Result: \"" + input + "\" is a Palindrome ✅");
         } else {
-            System.out.println("Result: \"" + original + "\" is NOT a Palindrome.");
+            System.out.println("Result: \"" + input + "\" is NOT a Palindrome ❌");
         }
 
-        System.out.println("======================================");
-        System.out.println("Program Ended.");
+        scanner.close();
     }
 }
