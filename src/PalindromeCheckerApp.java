@@ -1,34 +1,35 @@
 /**
- * UseCase2PalindromeCheckerApp
+ * UseCase3PalindromeCheckerApp
  * Version: 1.0
- * Description: Checks whether a hardcoded string is a palindrome
+ * Description: Palindrome check using String reverse logic
  */
 
-public class PalindromeCheckerApp {
+public class UseCase3PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // Hardcoded string (String Literal)
-        String word = "madam";
+        // Original String
+        String original = "level";
 
-        // Display the word being checked
         System.out.println("======================================");
-        System.out.println("Palindrome Checker App - UC2");
+        System.out.println("Palindrome Checker App - UC3");
         System.out.println("======================================");
-        System.out.println("Word to check: " + word);
+        System.out.println("Original String: " + original);
 
-        // Reverse the string
-        String reversedWord = "";
+        // Reverse the string using for loop
+        String reversed = "";
 
-        for (int i = word.length() - 1; i >= 0; i--) {
-            reversedWord = reversedWord + word.charAt(i);
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed = reversed + original.charAt(i);   // String concatenation
         }
 
-        // Palindrome check using if-else
-        if (word.equals(reversedWord)) {
-            System.out.println("Result: The word \"" + word + "\" is a Palindrome.");
+        System.out.println("Reversed String: " + reversed);
+
+        // Compare original and reversed using equals()
+        if (original.equals(reversed)) {
+            System.out.println("Result: \"" + original + "\" is a Palindrome.");
         } else {
-            System.out.println("Result: The word \"" + word + "\" is NOT a Palindrome.");
+            System.out.println("Result: \"" + original + "\" is NOT a Palindrome.");
         }
 
         System.out.println("======================================");
