@@ -1,33 +1,37 @@
 /**
- * UseCase1PalindromeCheckerApp
+ * UseCase2PalindromeCheckerApp
  * Version: 1.0
- * Description: Console-based Palindrome Checker Application
+ * Description: Checks whether a hardcoded string is a palindrome
  */
 
 public class PalindromeCheckerApp {
 
-    // Application Version (Static constant)
-    static final String APP_NAME = "Palindrome Checker App";
-    static final String VERSION = "Version 1.0";
-
-    /**
-     * Main Method - Entry point of the application
-     * JVM invokes this method automatically
-     */
     public static void main(String[] args) {
 
-        // Welcome Message
+        // Hardcoded string (String Literal)
+        String word = "madam";
+
+        // Display the word being checked
         System.out.println("======================================");
-        System.out.println("       " + APP_NAME);
-        System.out.println("       " + VERSION);
+        System.out.println("Palindrome Checker App - UC2");
         System.out.println("======================================");
+        System.out.println("Word to check: " + word);
 
-        System.out.println("Welcome to the Palindrome Checker Application!");
-        System.out.println("This application validates whether a given string is a palindrome.");
-        System.out.println("Developed to demonstrate core Java fundamentals.");
+        // Reverse the string
+        String reversedWord = "";
 
+        for (int i = word.length() - 1; i >= 0; i--) {
+            reversedWord = reversedWord + word.charAt(i);
+        }
 
-        // Flow continues to next use case (placeholder)
-        System.out.println("Application is ready for palindrome validation...");
+        // Palindrome check using if-else
+        if (word.equals(reversedWord)) {
+            System.out.println("Result: The word \"" + word + "\" is a Palindrome.");
+        } else {
+            System.out.println("Result: The word \"" + word + "\" is NOT a Palindrome.");
+        }
+
+        System.out.println("======================================");
+        System.out.println("Program Ended.");
     }
 }
